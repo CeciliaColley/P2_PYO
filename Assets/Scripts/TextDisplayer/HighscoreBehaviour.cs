@@ -37,6 +37,7 @@ public class HighscoreBehaviour : MonoBehaviour
     {
         if (ClickerBehaviour.Clicks > highscore)
         {
+            GameManager.Instance.highscoreSurepassed = true;
             highscore = ClickerBehaviour.Clicks;
             _highscoreNumber.text = highscore.ToString();
 #if UNITY_ANDROID

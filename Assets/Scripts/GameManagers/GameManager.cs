@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public bool timesUp = false;
     //HighscoreBehaviour subscribes setHighscore to this event, so that when the time is up, the highscore is set.
     public event Action TimesUpIsTrue;
+    private int _maxTime;
+    public bool highscoreSurepassed = false;
 
     // This class is a singleton.
     private void Awake()
@@ -47,7 +49,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Save what the original setting of maxTime was
+        _maxTime = maxTime;
+        // Subscribe the EndGame method to the TimeUpIsTrue event.
         TimesUpIsTrue += EndGame;
+        //Wait for the first click.
         StartCoroutine(WaitForFirstClick());
     }
 
@@ -61,6 +67,10 @@ public class GameManager : MonoBehaviour
     {
         gameCanvas.SetActive(false);
         endScreenPopup.SetActive(true);
+        if (maxTime > _maxTime)
+        {
+            maxTime = _maxTime;
+        }
     }
 
     public void RestartGame()
@@ -72,6 +82,7 @@ public class GameManager : MonoBehaviour
             pauseCanvas.SetActive(false);
             gameCanvas.SetActive(true);
 
+            highscoreSurepassed = false;
             timer.CurrentTime = 0;
             timesUp = false;
             activeSprinkles = 0;

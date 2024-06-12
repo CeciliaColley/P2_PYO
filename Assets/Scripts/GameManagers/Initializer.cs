@@ -62,6 +62,11 @@ public class Initializer : MonoBehaviour
         GameManager.Instance.buttonBehaviour = clickerBehaviourAndroid;
         GameManager.Instance.timer = timerAndroid;
 
+        CreditsButton.CreditsCanvas = creditsCanvasAndroid;
+        CreditsButton.EndScreen = endScreenPopupAndroid;
+
+        WatchAdButton.EndScreen = endScreenPopupAndroid;
+
 #elif UNITY_WEBGL
         BackButton.GameCanvas = gameCanvasWeb;
         BackButton.CreditsCanvas = creditsCanvasWeb;
@@ -82,6 +87,11 @@ public class Initializer : MonoBehaviour
         GameManager.Instance.creditsCanvas = creditsCanvasWeb;
         GameManager.Instance.buttonBehaviour = clickerBehaviourWeb;
         GameManager.Instance.timer = timerWeb;
+
+        CreditsButton.CreditsCanvas = creditsCanvasWeb;
+        CreditsButton.EndScreen = endScreenPopupWeb;
+
+        WatchAdButton.EndScreen = endScreenPopupWeb;
 #endif
     }
 
