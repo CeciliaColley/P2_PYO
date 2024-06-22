@@ -25,8 +25,6 @@ public class HighscoreBehaviour : MonoBehaviour
 
     private void Start()
     {
-        // Subscribe Setighscore to the TimesUpChanged event, so it will be called every time time is up.
-        GameManager.Instance.TimesUpIsTrue += SetHighscore;
 
         // Load the highscore form the save file and print it to the screen.
         highscore = LoadHighscore();
@@ -35,11 +33,17 @@ public class HighscoreBehaviour : MonoBehaviour
 
     private void SetHighscore()
     {
+        Debug.Log("Setting high score.");
         if (ClickerBehaviour.Clicks > highscore)
         {
+            Debug.Log("Clicks: " + ClickerBehaviour.Clicks);
+            Debug.Log("Highscore: " + highscore);
             GameManager.Instance.highscoreSurepassed = true;
+            Debug.Log("Highscore surpassed: " + GameManager.Instance.highscoreSurepassed);
             highscore = ClickerBehaviour.Clicks;
+            Debug.Log("New highscore: " + highscore);
             _highscoreNumber.text = highscore.ToString();
+            Debug.Log("To text.");
 #if UNITY_ANDROID
             {
                 SaveHighscore(highscore);
@@ -66,6 +70,12 @@ public class HighscoreBehaviour : MonoBehaviour
         // Load highscore from other platforms
         return 0;
 #endif
+    }
+
+    private void OnEnable()
+    {        
+        // Subscribe Setighscore to the TimesUpChanged event, so it will be called every time time is up.
+        GameManager.Instance.TimesUpIsTrue += SetHighscore;
     }
 
     private void OnDisable()

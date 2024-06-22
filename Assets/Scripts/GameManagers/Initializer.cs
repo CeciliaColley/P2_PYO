@@ -73,11 +73,11 @@ public class Initializer : MonoBehaviour
         BackButton.PauseCanvas = pauseCanvasWeb;
         BackButton.EndScreenPopup = endScreenPopupWeb;
 
-        ClickerBehaviour.ClicksNumberEndScreen = _clicksNumberEndScreenWeb;
-        ClickerBehaviour.ClicksNumberGameScreen = _clicksNumberGameScreenWeb;
+        ClickerBehaviour.ClicksNumberEndScreen = clicksNumberEndScreenWeb;
+        ClickerBehaviour.ClicksNumberGameScreen = clicksNumberGameScreenWeb;
 
-        HighscoreBehaviour.ClickerBehaviour = _clickerBehaviourWeb;
-        HighscoreBehaviour.HighscoreNumber = _highscoreNumberWeb;
+        HighscoreBehaviour.ClickerBehaviour = clickerBehaviourWeb;
+        HighscoreBehaviour.HighscoreNumber = highscoreNumberWeb;
 
         Timer.TimeText = timeTextWeb;
 
