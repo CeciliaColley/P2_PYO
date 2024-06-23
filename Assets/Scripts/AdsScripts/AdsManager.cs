@@ -1,3 +1,4 @@
+#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,3 +55,4 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
         else Destroy(gameObject);
     }
 }
+#endif

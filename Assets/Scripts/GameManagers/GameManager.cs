@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This class follows the Singleton design pattern.
 public class GameManager : MonoBehaviour
 {
     // These variables must be set up in the inspector
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
     public event Action TimesUpIsTrue;
     private int _maxTime;
 
-    // This class is a singleton.
     private void Awake()
     {
         if (Instance == null)
@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Start()
     {
         // Save what the original setting of maxTime was
@@ -75,23 +74,37 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        buttonBehaviour.Clicks = 0;
+        RestartUI();
+        RestartTime();
+        RestartSprinkles();
+        StartCoroutine(WaitForFirstClick());
+    }
+
+    private void RestartUI()
+    {
         if (gameCanvas != null && !gameCanvas.activeSelf)
         {
             creditsCanvas.SetActive(false);
             endScreenPopup.SetActive(false);
             pauseCanvas.SetActive(false);
             gameCanvas.SetActive(true);
+        }  
+    }
 
-            timer.CurrentTime = 0;
-            timesUp = false;
-            activeSprinkles = 0;
-            buttonBehaviour.Clicks = 0;
-            foreach (GameObject sprinkle in sprinkles)
-            {
-                sprinkle.SetActive(false);
-            }
-            StartCoroutine(WaitForFirstClick());
+    private void RestartSprinkles()
+    {
+        activeSprinkles = 0;
+        foreach (GameObject sprinkle in sprinkles)
+        {
+            sprinkle.SetActive(false);
         }
+    }
+
+    private void RestartTime()
+    {
+        timer.CurrentTime = 0;
+        timesUp = false;
     }
 
     // TimesUp is used by Timer to set timesUp to true.

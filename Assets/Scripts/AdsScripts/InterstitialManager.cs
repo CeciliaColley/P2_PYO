@@ -1,3 +1,4 @@
+#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,4 +65,4 @@ public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityA
         Debug.Log($"Error showing Ad Unit {adUnitID}: {error.ToString()} - {message}");
     }
 }
-
+#endif

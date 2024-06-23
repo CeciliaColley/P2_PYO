@@ -1,3 +1,4 @@
+#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         adUnitID = iOSAdUnitID;
 #elif UNITY_ANDROID
         adUnitID = androidAdUnitID;
-#endif           
+#endif
     }
 
     internal void Initialize()
@@ -71,3 +72,4 @@ public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     }
 
 }
+#endif

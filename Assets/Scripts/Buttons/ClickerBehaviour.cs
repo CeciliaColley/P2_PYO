@@ -52,6 +52,10 @@ public class ClickerBehaviour : MonoBehaviour
     {
         ClicksChanged += DisplayClicks;
         ClicksChanged += SpawnSprinkle;
+        if (_clicksNumberGameScreen != null)
+        {
+            _clicksNumberGameScreen.text = Clicks.ToString();
+        }
     }
 
     private void OnDisable()

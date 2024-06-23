@@ -11,6 +11,7 @@ public class HighscoreBehaviour : MonoBehaviour
     private static TextMeshProUGUI _highscoreNumber;
     
     private int highscore = 0;
+    private bool subscribed = false;
 
     public static ClickerBehaviour ClickerBehaviour
     {
@@ -25,26 +26,25 @@ public class HighscoreBehaviour : MonoBehaviour
 
     private void Start()
     {
-
         // Load the highscore form the save file and print it to the screen.
         highscore = LoadHighscore();
-        _highscoreNumber.text = highscore.ToString();        
-        GameManager.Instance.TimesUpIsTrue += CheckHighscore;
-        Debug.Log("check highscore eubscribed to time is up event.");
+        _highscoreNumber.text = highscore.ToString();
     }
 
     private void OnEnable()
     {
         // Subscribe Setighscore to the TimesUpChanged event, so it will be called every time the time is up.
-        if (GameManager.Instance != null)
+        if (GameManager.Instance != null && !subscribed)
         {
             GameManager.Instance.TimesUpIsTrue += CheckHighscore;
-            Debug.Log("check highscore eubscribed to time is up event.");
+            subscribed = true;
+            Debug.Log("check highscore subscribed to time is up event.");
         }
     }
 
     private void OnDisable()
     {
+        subscribed = false;
         GameManager.Instance.TimesUpIsTrue -= CheckHighscore;
     }
 
@@ -54,10 +54,12 @@ public class HighscoreBehaviour : MonoBehaviour
         {
             SetNewHighscore();
         }
+#if UNITY_ANDROID || UNITY_IOS
         else
         {
             AdsManager.Instance.interstitial.ShowInterstitial();
         }
+#endif
     }
 
     private void SetNewHighscore()
@@ -69,21 +71,14 @@ public class HighscoreBehaviour : MonoBehaviour
 
     private void SaveHighscore(int newHighscore)
     {
-#if UNITY_ANDROID
         PlayerPrefs.SetInt("Highscore", newHighscore);
         PlayerPrefs.Save();
-#endif
         return;
     }
 
     private int LoadHighscore()
     {
-#if UNITY_ANDROID
         return PlayerPrefs.GetInt("Highscore", 0);
-#else
-        // Load highscore from other platforms
-        return 0;
-#endif
     }
 
 }

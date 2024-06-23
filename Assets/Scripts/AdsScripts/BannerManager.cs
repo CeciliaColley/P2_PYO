@@ -1,3 +1,4 @@
+#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,3 +42,4 @@ public class BannerManager : MonoBehaviour
         Debug.Log($"Banner Error: {message}");
     }
 }
+#endif
