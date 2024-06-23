@@ -47,10 +47,17 @@ public class ClickerBehaviour : MonoBehaviour
         ClicksChanged?.Invoke();
     }
 
-    private void Start()
+
+    private void OnEnable()
     {
         ClicksChanged += DisplayClicks;
         ClicksChanged += SpawnSprinkle;
+    }
+
+    private void OnDisable()
+    {
+        ClicksChanged -= DisplayClicks;
+        ClicksChanged -= SpawnSprinkle;
     }
 
     // This is the method assigned as the buttons event in the inspector.

@@ -6,8 +6,11 @@ using UnityEngine.Advertisements;
 public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 
 {
+    //These variables must be set from the inspector.
     [SerializeField] string androidAdUnitID = "Rewarded_Android";
     [SerializeField] string iOSAdUnitID = "Rewarded_iOS";
+    public int rewardedSeconds = 0;
+
     string adUnitID = null;
     bool adLoaded = false;
 
@@ -37,6 +40,7 @@ public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
 
     public void OnUnityAdsShowStart(string _adUnitId)
     {
+        Advertisement.Banner.Hide();
         Debug.Log("Showing rewarded ad.");
     }
 
@@ -50,7 +54,11 @@ public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         if (_adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Reward is being delivered now.");
+            GameManager.Instance.maxTime += rewardedSeconds;
+            GameManager.Instance.RestartGame();
         }
+        Debug.Log("A rewarded ad is closing.");
+        AdsManager.Instance.banner.Show();
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)

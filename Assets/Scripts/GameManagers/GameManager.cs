@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [HideInInspector]
     public bool timesUp = false;
-    //HighscoreBehaviour subscribes setHighscore to this event, so that when the time is up, the highscore is set.
+    // The CheckHighscore method in HighscoreBehaviour is subscribed to this event. In other words, when the time is up, the CheckHighscore method is called. 
+    // The EndGame method in GameManager (this script) is also subscribed to this event. In other words, when time is up, the end game method is called. 
     public event Action TimesUpIsTrue;
     private int _maxTime;
-    public bool highscoreSurepassed = false;
 
     // This class is a singleton.
     private void Awake()
@@ -82,7 +82,6 @@ public class GameManager : MonoBehaviour
             pauseCanvas.SetActive(false);
             gameCanvas.SetActive(true);
 
-            highscoreSurepassed = false;
             timer.CurrentTime = 0;
             timesUp = false;
             activeSprinkles = 0;

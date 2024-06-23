@@ -65,8 +65,6 @@ public class Initializer : MonoBehaviour
         CreditsButton.CreditsCanvas = creditsCanvasAndroid;
         CreditsButton.EndScreen = endScreenPopupAndroid;
 
-        WatchAdButton.EndScreen = endScreenPopupAndroid;
-
 #elif UNITY_WEBGL
         BackButton.GameCanvas = gameCanvasWeb;
         BackButton.CreditsCanvas = creditsCanvasWeb;
@@ -90,8 +88,6 @@ public class Initializer : MonoBehaviour
 
         CreditsButton.CreditsCanvas = creditsCanvasWeb;
         CreditsButton.EndScreen = endScreenPopupWeb;
-
-        WatchAdButton.EndScreen = endScreenPopupWeb;
 #endif
     }
 

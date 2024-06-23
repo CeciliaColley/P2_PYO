@@ -32,6 +32,8 @@ public class Timer : MonoBehaviour
             }
         }
     }
+
+    // Subscribing Display Time to the Time Changed event at the beginning of the program.
     private void Start()
     {
         TimeChanged += DisplayTime;

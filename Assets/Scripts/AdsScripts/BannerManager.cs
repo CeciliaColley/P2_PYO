@@ -27,7 +27,7 @@ public class BannerManager : MonoBehaviour
             errorCallback = OnBannerError
         };
 
-        Advertisement.Banner.SetPosition(BannerPosition.TOP_LEFT);
+        Advertisement.Banner.SetPosition(BannerPosition.TOP_RIGHT);
         Advertisement.Banner.Load(adUnitID, options);
     }
 

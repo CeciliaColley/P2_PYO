@@ -5,6 +5,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 {
+    public static AdsManager Instance { get; private set; }
     public BannerManager banner;
     public InterstitialManager interstitial;
     public RewardedAdManager rewardedAd;
@@ -44,5 +45,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
             // I do understand that at the time of publishing the test mode should be false.
             Advertisement.Initialize(gameID, true, this);
         }
+
+        // Once everything is initialized, I make it a singleton
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Destroy(gameObject);
     }
 }

@@ -16,7 +16,7 @@ public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityA
         adUnitID = iOSAdUnitID;
 #elif UNITY_ANDROID
         adUnitID = androidAdUnitID;
-#endif        
+#endif
     }
 
     internal void Initialize()
@@ -37,11 +37,14 @@ public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityA
     public void ShowInterstitial()
     {
         if (adLoaded)
+        {
             Advertisement.Show(adUnitID, this);
+        }
     }
 
     public void OnUnityAdsShowStart(string _adUnitId)
     {
+        Advertisement.Banner.Hide();
         Debug.Log("Showing interstitial now");
     }
 
@@ -52,7 +55,8 @@ public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityA
 
     public void OnUnityAdsShowComplete(string _adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
-        Debug.Log("The ad was viewed to completion.");
+        Debug.Log("An interstitial ad is closing.");
+        AdsManager.Instance.banner.Show();
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
