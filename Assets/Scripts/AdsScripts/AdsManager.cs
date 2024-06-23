@@ -1,11 +1,14 @@
-#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
+public class AdsManager : MonoBehaviour
+#if UNITY_ANDROID || UNITY_IOS
+    , IUnityAdsInitializationListener
+#endif
 {
+#if UNITY_ANDROID || UNITY_IOS
     public static AdsManager Instance { get; private set; }
     public BannerManager banner;
     public InterstitialManager interstitial;
@@ -54,5 +57,5 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
         }
         else Destroy(gameObject);
     }
-}
 #endif
+}

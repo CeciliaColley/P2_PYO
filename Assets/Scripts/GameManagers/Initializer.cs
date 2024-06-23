@@ -6,6 +6,7 @@ public class Initializer : MonoBehaviour
 
     [Header("REFERENCES FOR WEB")]
     [Header("References To canvases")]
+    [SerializeField] private GameObject webUI;
     [SerializeField] private GameObject gameCanvasWeb;
     [SerializeField] private GameObject creditsCanvasWeb;
     [SerializeField] private GameObject pauseCanvasWeb;
@@ -88,6 +89,15 @@ public class Initializer : MonoBehaviour
 
         CreditsButton.CreditsCanvas = creditsCanvasWeb;
         CreditsButton.EndScreen = endScreenPopupWeb;
+#endif
+    }
+
+    private void Start()
+    {
+#if UNITY_WEBGL
+        webUI.SetActive(true);
+#elif UNITY_ANDROID || UNITY_IOS
+        gameCanvasAndroid.SetActive(true);
 #endif
     }
 

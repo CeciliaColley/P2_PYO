@@ -7677,9 +7677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d62df67e9ac4a7488a6897d614fdd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitID: Banner_Android
-  iOSAdUnitID: Banner_iOS
-  adUnitID: 
 --- !u!4 &724668586
 Transform:
   m_ObjectHideFlags: 0
@@ -8653,10 +8650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17164c83b7f56924ba4507688f2c1ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitID: Interstitial_Android
-  iOSAdUnitID: Interstitial_iOS
-  adUnitID: 
-  adLoaded: 0
 --- !u!4 &804746684
 Transform:
   m_ObjectHideFlags: 0
@@ -8949,10 +8942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05e9827ee5cb1346912af9efaed78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  banner: {fileID: 724668585}
-  interstitial: {fileID: 804746683}
-  rewardedAd: {fileID: 935384451}
-  gameID: 
 --- !u!1 &842286975
 GameObject:
   m_ObjectHideFlags: 0
@@ -9862,11 +9851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c34eb76a3eef2f4fbc564c29f31c712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitID: Rewarded_Android
-  iOSAdUnitID: Rewarded_iOS
-  rewardedSeconds: 0
-  adUnitID: 
-  adLoaded: 0
 --- !u!4 &935384452
 Transform:
   m_ObjectHideFlags: 0
@@ -13528,7 +13512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1214855918
 Transform:
   m_ObjectHideFlags: 0
@@ -17314,6 +17298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adcae524ab574f4884678e9f2efe354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  webUI: {fileID: 1214855917}
   gameCanvasWeb: {fileID: 1368381502}
   creditsCanvasWeb: {fileID: 730884469}
   pauseCanvasWeb: {fileID: 1565220573}

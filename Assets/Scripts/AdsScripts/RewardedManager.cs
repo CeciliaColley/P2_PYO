@@ -1,12 +1,14 @@
-#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
-
+public class RewardedAdManager : MonoBehaviour
+#if UNITY_ANDROID || UNITY_IOS
+    , IUnityAdsLoadListener, IUnityAdsShowListener
+#endif
 {
+#if UNITY_ANDROID || UNITY_IOS
     //These variables must be set from the inspector.
     [SerializeField] string androidAdUnitID = "Rewarded_Android";
     [SerializeField] string iOSAdUnitID = "Rewarded_iOS";
@@ -71,5 +73,5 @@ public class RewardedAdManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         adLoaded = true;
     }
 
-}
 #endif
+}

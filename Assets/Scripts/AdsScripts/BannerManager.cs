@@ -1,4 +1,3 @@
-#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +5,7 @@ using UnityEngine.Advertisements;
 
 public class BannerManager : MonoBehaviour
 {
+#if UNITY_ANDROID || UNITY_IOS
     [SerializeField] string androidAdUnitID = "Banner_Android";
     [SerializeField] string iOSAdUnitID = "Banner_iOS";
     string adUnitID = null;
@@ -41,5 +41,5 @@ public class BannerManager : MonoBehaviour
     {
         Debug.Log($"Banner Error: {message}");
     }
-}
 #endif
+}

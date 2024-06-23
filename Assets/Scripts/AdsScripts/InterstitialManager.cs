@@ -1,11 +1,14 @@
-#if UNITY_ANDROID || UNITY_IOS
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class InterstitialManager : MonoBehaviour
+#if UNITY_ANDROID || UNITY_IOS
+, IUnityAdsLoadListener, IUnityAdsShowListener
+#endif
 {
+#if UNITY_ANDROID || UNITY_IOS
     [SerializeField] string androidAdUnitID = "Interstitial_Android";
     [SerializeField] string iOSAdUnitID = "Interstitial_iOS";
     string adUnitID;
@@ -64,5 +67,5 @@ public class InterstitialManager : MonoBehaviour, IUnityAdsLoadListener, IUnityA
     {
         Debug.Log($"Error showing Ad Unit {adUnitID}: {error.ToString()} - {message}");
     }
-}
 #endif
+}

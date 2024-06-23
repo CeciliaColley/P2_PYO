@@ -11,7 +11,6 @@ public class HighscoreBehaviour : MonoBehaviour
     private static TextMeshProUGUI _highscoreNumber;
     
     private int highscore = 0;
-    private bool subscribed = false;
 
     public static ClickerBehaviour ClickerBehaviour
     {
@@ -34,17 +33,15 @@ public class HighscoreBehaviour : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe Setighscore to the TimesUpChanged event, so it will be called every time the time is up.
-        if (GameManager.Instance != null && !subscribed)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.TimesUpIsTrue += CheckHighscore;
-            subscribed = true;
             Debug.Log("check highscore subscribed to time is up event.");
         }
     }
 
     private void OnDisable()
     {
-        subscribed = false;
         GameManager.Instance.TimesUpIsTrue -= CheckHighscore;
     }
 
