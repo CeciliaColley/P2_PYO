@@ -12,20 +12,21 @@ public class ClickerBehaviour : MonoBehaviour
     private int clicks;
 
     // This event watches the clicks variable for any changes.
-    public event Action ClicksChanged;
+    public event Action ClickRegistered;
 
+    // This static method is used to initialize _clicksNumberGameScreen from the initializer, while maintaining encapsulation.
     public static TextMeshProUGUI ClicksNumberGameScreen
     {
-        get => _clicksNumberGameScreen;
         set => _clicksNumberGameScreen = value;
     }
 
+    // This static method is used to initialize _clicksNumberEndScreen from the initializer, while maintaining encapsulation.
     public static TextMeshProUGUI ClicksNumberEndScreen
     {
-        get => _clicksNumberEndScreen;
         set => _clicksNumberEndScreen = value;
     }
 
+    // An observer that watches the value of clicks, and can be used to trigger events or call methods every time to clicks value is got or set.
     // When a click is registered, all of the methods subscribed to the ClicksChanged even will fire.
     public int Clicks
     {
@@ -44,35 +45,31 @@ public class ClickerBehaviour : MonoBehaviour
     // Made it protected and virtual so that you can add more kinds of clickers in the future, if you want to.
     protected virtual void OnClicksChanged()
     {
-        ClicksChanged?.Invoke();
+        ClickRegistered?.Invoke();
     }
 
-    //private void Awake()
-    //{
-    //    Vector3 clickerPosition = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
-    //    clickerPosition.z = 0;
-    //    SprinkleBehaviour.startingPosition = clickerPosition;
-    //    Debug.Log("Clicker position set to : " + clickerPosition);
-    //}
-
+    // When the object this script is attatched to (the clicker) is enabled, DisplayClicks and SpawnSprinkle are subscribed to the ClickRegistered event.
+    // The amount of clicks is displayed to the game screen.
     private void OnEnable()
     {
-        Debug.Log("Subscribing display clicks and spawn sprinkle");
-        ClicksChanged += DisplayClicks;
-        ClicksChanged += SpawnSprinkle;
+        ClickRegistered += DisplayClicks;
+        ClickRegistered += SpawnSprinkle;
         if (_clicksNumberGameScreen != null)
         {
             _clicksNumberGameScreen.text = Clicks.ToString();
         }
     }
 
+    // Unsubscribing events to avoid memory leaks.
     private void OnDisable()
     {
-        ClicksChanged -= DisplayClicks;
-        ClicksChanged -= SpawnSprinkle;
+        ClickRegistered -= DisplayClicks;
+        ClickRegistered -= SpawnSprinkle;
     }
 
-    // This is the method assigned as the buttons event in the inspector.
+    // This function is called from the inspector as an on click event of the clicker button.
+    // It check if the time is up, in which case it returns and nothing happens.
+    // On the other hand, if the time was not up, it increases the clicks value by a unit of 1.
     public void RegisterClick()
     {
         if (GameManager.Instance.TimesUp)
@@ -82,6 +79,7 @@ public class ClickerBehaviour : MonoBehaviour
         Clicks++;
     }
 
+    // This function displays the amount of clicks to the correct TextMeshProUGUI of both the end screen and the game screen.
     private void DisplayClicks()
     {
         if (_clicksNumberGameScreen != null)
@@ -91,9 +89,9 @@ public class ClickerBehaviour : MonoBehaviour
         }
     }
 
+    // Thus function activates a sprinkle from a pool of sprrinkles, and keeps track of how many sprinkles are active.
     private void SpawnSprinkle()
     {
-        Debug.Log("Spawn Sprinkle");
         GameObject sprinkle = GameManager.Instance.sprinkles[GameManager.Instance.activeSprinkles];
         if (sprinkle.activeSelf == true)
         {

@@ -2,6 +2,12 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
+// THIS CLASS IS THE INITIALIZER: IT IS IN CHARGE OF PASSING THE CORRECT REFERENCES TO THE GAME'S SCRITPS AT THE BEGGINING OF THE GAME. 
+// It has references to all of the different UI components, and initializes the rest of the scripts with the right references based on the device the user is on.
+// This sript also initializes the correct UI depending on the decide the user is on.
+// This script also finds the position of the screen that the clicker button is at, and initializes the sprinkles with that position.
+
+
 public class Initializer : MonoBehaviour
 {
 
@@ -127,7 +133,6 @@ if (clickerWeb != null)
         {
             buttonPosition = Camera.main.ScreenToWorldPoint(clicker.transform.position);
             buttonPosition.z = 0;
-            Debug.Log("Button position : " + buttonPosition);
         }
         SprinkleBehaviour.startingPosition = buttonPosition;
     }

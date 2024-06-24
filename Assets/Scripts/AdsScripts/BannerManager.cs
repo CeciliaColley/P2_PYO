@@ -22,12 +22,14 @@ public class BannerManager : MonoBehaviour
 
     public void Show()
     {
+        // Callbacks for when the banner is loading
         BannerLoadOptions options = new BannerLoadOptions
         {
             loadCallback = OnBannerLoaded,
             errorCallback = OnBannerError
         };
 
+        // Set the position of the banner and load the ad
         Advertisement.Banner.SetPosition(BannerPosition.TOP_RIGHT);
         Advertisement.Banner.Load(adUnitID, options);
     }
@@ -37,6 +39,7 @@ public class BannerManager : MonoBehaviour
         Advertisement.Banner.Show(adUnitID);
     }
 
+    // Included for debugging purposes
     void OnBannerError(string message)
     {
         Debug.Log($"Banner Error: {message}");

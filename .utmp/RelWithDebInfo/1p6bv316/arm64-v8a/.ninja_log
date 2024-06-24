@@ -1,0 +1,11 @@
+# ninja log v5
+208	1694	7409730715169114	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	dacc3e21d043c53e
+1702	2746	7409730722946008	C:/Users/Cecilia/Documents/Image_Campus/Optimizacion/P2_PYO/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1p6bv316/obj/arm64-v8a/libswappywrapper.so	7f73509d8d92c7ac
+114	5912	7409730757211838	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	c136ac5d2629874
+32	5960	7409730757729535	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	2e7cd6fd019bec07
+82	6144	7409730759659156	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	8364b71d30ab9262
+179	6585	7409730763762855	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c3d7ade59de0b4be
+56	6891	7409730767100508	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	89c775fcfb0f94cb
+150	7918	7409730777388411	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8f2aed5c94f02ee0
+4	8325	7409730781620792	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f36af9cb1a24a642
+8326	9025	7409730786625221	C:/Users/Cecilia/Documents/Image_Campus/Optimizacion/P2_PYO/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1p6bv316/obj/arm64-v8a/libgame.so	114820f10f0c774d

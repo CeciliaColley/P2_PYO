@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
+
+// This class follows the singleton design pattern.
 public class AdsManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
     , IUnityAdsInitializationListener
 #endif
 {
 #if UNITY_ANDROID || UNITY_IOS
+    // Part of the singleton pattern.
     public static AdsManager Instance { get; private set; }
+    
+    // These varibales are references to the game objects that act as "managers" of ads, and must be referenced in the engine. 
+    // These variable ARE NOT set up by the intializer, as they are not platform dependent. 
     public BannerManager banner;
     public InterstitialManager interstitial;
     public RewardedAdManager rewardedAd;
 
+    // This private variable is used internally by the class to load ads.
     private string gameID;
 
+    // This function shows the banner and initializes the interstitial and rewarded ads.
     public void OnInitializationComplete()
     {
-        Debug.Log("Unity Ads Initialization Complete.");
         banner.Show();
         interstitial.Initialize();
         rewardedAd.Initialize();
     }
 
+    // Included for debugging purposes.
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
         Debug.Log($"Unity Ads Initialization Failed {error.ToString()} - {message}.");

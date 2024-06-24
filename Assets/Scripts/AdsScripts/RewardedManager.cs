@@ -26,49 +26,62 @@ public class RewardedAdManager : MonoBehaviour
 #endif
     }
 
+    // Innitialize the Ad.
     internal void Initialize()
     {
         Advertisement.Load(adUnitID, this);
     }
 
+    // Play the ad that was loaded.
     public void ShowRewardedAd()
     {
-        Advertisement.Show(adUnitID, this);
+        if (adLoaded)
+        {
+            Advertisement.Show(adUnitID, this);
+        }        
     }
 
+    // Included for debugging purposes.
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"Rewarded Ad: Error loading Ad Unit: {adUnitID} - {error.ToString()} - {message}");
     }
 
+    // Hide the banner so it doesn't cover the rewarded ad.
     public void OnUnityAdsShowStart(string _adUnitId)
     {
         Advertisement.Banner.Hide();
-        Debug.Log("Showing rewarded ad.");
     }
 
+    // Included for debuggin purposes and to showcase that I know thins function exists.
     public void OnUnityAdsShowClick(string _adUnitId)
     {
         Debug.Log("An rewarded ad was clicked on.");
     }
 
+    //  Once the ad is completed, check if is was watched to completion.
+    // If it was, add the rewarded seconds to the max time for the next match
+    // Restart the game
+    // Start showing the banner again and load the next rewarded ad.
     public void OnUnityAdsShowComplete(string _adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         if (_adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            Debug.Log("Reward is being delivered now.");
             GameManager.Instance.maxTime += rewardedSeconds;
             GameManager.Instance.RestartGame();
         }
-        Debug.Log("A rewarded ad is closing.");
         AdsManager.Instance.banner.Show();
+        adLoaded = false;
         Advertisement.Load(adUnitID, this);
     }
 
+    // Included for debugging purposes.
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error showing Ad Unit {adUnitID}: {error.ToString()} - {message}");
     }
+
+    // Flag the ad as loaded if it's done succesfully. 
     public void OnUnityAdsAdLoaded(string placementId)
     {
         adLoaded = true;

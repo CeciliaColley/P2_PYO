@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Notifications.Android;
 using UnityEngine;
 
+
 public class LocalNotisManager : MonoBehaviour
 {
     private static string CHANNEL_ID = "notis01";
@@ -11,13 +12,17 @@ public class LocalNotisManager : MonoBehaviour
     private void Start()
     {
         string NotiChannels_Created_Key = "NotiChannels_Created";
+
+        // Check if notification channels are already created
         if (!PlayerPrefs.HasKey(NotiChannels_Created_Key))
         {
+            // Create a notification channel group
             var group = new AndroidNotificationChannelGroup()
             {
                 Id = "Main",
                 Name = "Main notifications",
             };
+            // Create a new notifications channel
             AndroidNotificationCenter.RegisterNotificationChannelGroup(group);
             var channel = new AndroidNotificationChannel()
             {
@@ -29,8 +34,10 @@ public class LocalNotisManager : MonoBehaviour
             };
             AndroidNotificationCenter.RegisterNotificationChannel(channel);
 
+            // Request notification permission
             StartCoroutine(RequestPermission());
 
+            // Mark that the notification channels are created
             PlayerPrefs.SetString(NotiChannels_Created_Key, "y");
             PlayerPrefs.Save();
         }
@@ -40,6 +47,7 @@ public class LocalNotisManager : MonoBehaviour
         }
     }
 
+    // Request permision to send notifications
     private IEnumerator RequestPermission()
     {
         var request = new PermissionRequest();
@@ -49,6 +57,7 @@ public class LocalNotisManager : MonoBehaviour
         ScheduleNotis();
     }
 
+    // Create a new cotification to be sent out 10 minutes after the game is closed.
     private void ScheduleNotis()
     {
         AndroidNotificationCenter.CancelAllScheduledNotifications();

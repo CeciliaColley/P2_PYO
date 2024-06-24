@@ -11,30 +11,33 @@ public class BackButton : MonoBehaviour
     private static GameObject _pauseCanvas;
     private static GameObject _endScreenPopup;
 
+    // This static method is used to initialize _gameCanvas from the initializer, while maintaining encapsulation.
     public static GameObject GameCanvas
     {
-        get => _gameCanvas;
         set => _gameCanvas = value;
     }
-
+    
+    // This static method is used to initialize _creditsCanvas from the initializer, while maintaining encapsulation.
     public static GameObject CreditsCanvas
     {
-        get => _creditsCanvas;
         set => _creditsCanvas = value;
     }
 
+    // This static method is used to initialize _pauseCanvas from the initializer, while maintaining encapsulation.
+    // Although a pause canvas was not created, the functionality for one is made, so adding one in the future is possible (open for extension.)
     public static GameObject PauseCanvas
     {
-        get => _pauseCanvas;
         set => _pauseCanvas = value;
     }
 
+    // This static method is used to initialize _endScreenPopup from the initializer, while maintaining encapsulation.
     public static GameObject EndScreenPopup
     {
-        get => _endScreenPopup;
         set => _endScreenPopup = value;
     }
 
+    // I'm using the old input system and escape because the back key for android is configured as the escape button.
+    // If the back button (or escape) is pressed, the GoBack function will be called.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -43,6 +46,8 @@ public class BackButton : MonoBehaviour
         }
     }
 
+    // This function closes any UI that's open.
+    // If the UI that was open was the endScreen, the game is restarted.
     public void GoBack()
     {
         if (_creditsCanvas != null && _creditsCanvas.activeSelf)
