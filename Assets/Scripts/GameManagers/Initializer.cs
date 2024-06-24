@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class Initializer : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Initializer : MonoBehaviour
     [Space(10)]
     [Header("REFERENCES FOR ANDROID")]
     [Header("References to canvases")]
+    [SerializeField] private GameObject androidUI;
     [SerializeField] private GameObject gameCanvasAndroid;
     [SerializeField] private GameObject creditsCanvasAndroid;
     [SerializeField] private GameObject pauseCanvasAndroid;
@@ -41,7 +43,8 @@ public class Initializer : MonoBehaviour
 
     private void Awake()
     {
-        SprinkleBehaviour.startingPosition = FindButtonWorldPosition();
+        StartCoroutine(FindButtonWorldPosition());
+        
 #if UNITY_ANDROID
         BackButton.GameCanvas = gameCanvasAndroid;
         BackButton.CreditsCanvas = creditsCanvasAndroid;
@@ -97,11 +100,11 @@ public class Initializer : MonoBehaviour
 #if UNITY_WEBGL
         webUI.SetActive(true);
 #elif UNITY_ANDROID || UNITY_IOS
-        gameCanvasAndroid.SetActive(true);
+        androidUI.SetActive(true);
 #endif
     }
 
-    private Vector3 FindButtonWorldPosition()
+    private IEnumerator FindButtonWorldPosition()
     {
         GameObject clicker = null;
 
@@ -117,13 +120,15 @@ if (clickerWeb != null)
             clicker = clickerWeb;
         }
 #endif
+        yield return new WaitUntil(() => clicker.activeSelf == true);
 
         Vector3 buttonPosition = new Vector3();
         if (clicker != null)
         {
             buttonPosition = Camera.main.ScreenToWorldPoint(clicker.transform.position);
             buttonPosition.z = 0;
+            Debug.Log("Button position : " + buttonPosition);
         }
-        return buttonPosition;
+        SprinkleBehaviour.startingPosition = buttonPosition;
     }
 }

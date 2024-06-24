@@ -7677,6 +7677,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d62df67e9ac4a7488a6897d614fdd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  androidAdUnitID: Banner_Android
+  iOSAdUnitID: Banner_iOS
 --- !u!4 &724668586
 Transform:
   m_ObjectHideFlags: 0
@@ -8650,6 +8652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17164c83b7f56924ba4507688f2c1ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  androidAdUnitID: Interstitial_Android
+  iOSAdUnitID: Interstitial_iOS
 --- !u!4 &804746684
 Transform:
   m_ObjectHideFlags: 0
@@ -8942,6 +8946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05e9827ee5cb1346912af9efaed78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  banner: {fileID: 724668585}
+  interstitial: {fileID: 804746683}
+  rewardedAd: {fileID: 935384451}
 --- !u!1 &842286975
 GameObject:
   m_ObjectHideFlags: 0
@@ -9851,6 +9858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c34eb76a3eef2f4fbc564c29f31c712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  androidAdUnitID: Rewarded_Android
+  iOSAdUnitID: Rewarded_iOS
+  rewardedSeconds: 2
 --- !u!4 &935384452
 Transform:
   m_ObjectHideFlags: 0
@@ -14283,6 +14293,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261630299}
   m_CullTransparentMesh: 1
+--- !u!1 &1265179852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265179854}
+  - component: {fileID: 1265179853}
+  m_Layer: 0
+  m_Name: NotisManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1265179853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265179852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6debd2346bd084baeaa7b9d9b8b6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1265179854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265179852}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 837.2596, y: 601.4246, z: -9.854524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269367000
 GameObject:
   m_ObjectHideFlags: 0
@@ -14652,7 +14706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 227.97583, y: -213.7}
+  m_AnchoredPosition: {x: 227.97607, y: -213.69995}
   m_SizeDelta: {x: 239.95172, y: 109.92767}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306186296
@@ -17310,6 +17364,7 @@ MonoBehaviour:
   clickerWeb: {fileID: 316445915}
   clickerBehaviourWeb: {fileID: 316445916}
   timerWeb: {fileID: 1213895277}
+  androidUI: {fileID: 323597385}
   gameCanvasAndroid: {fileID: 1020300325}
   creditsCanvasAndroid: {fileID: 736509868}
   pauseCanvasAndroid: {fileID: 1565220573}
@@ -19873,7 +19928,7 @@ Transform:
   m_GameObject: {fileID: 1871962046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0032111087, w: -0.9999949}
-  m_LocalPosition: {x: -6.6498, y: 4.4361, z: 0.19183776}
+  m_LocalPosition: {x: -7.0726, y: 4.5802, z: 0.19183776}
   m_LocalScale: {x: 0.07, y: 0.1117, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22804,10 +22859,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1252935672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0037079, y: 31.9493}
-  m_SizeDelta: {x: 1428, y: 741.7819}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0037231445, y: 31.949295}
+  m_SizeDelta: {x: -176, y: -56.21808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091328377
 MonoBehaviour:
@@ -24175,3 +24230,4 @@ SceneRoots:
   - {fileID: 1640103302}
   - {fileID: 1663067521}
   - {fileID: 841185243}
+  - {fileID: 1265179854}

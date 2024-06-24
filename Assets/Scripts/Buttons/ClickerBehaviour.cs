@@ -47,9 +47,17 @@ public class ClickerBehaviour : MonoBehaviour
         ClicksChanged?.Invoke();
     }
 
+    //private void Awake()
+    //{
+    //    Vector3 clickerPosition = Camera.main.ScreenToWorldPoint(gameObject.transform.position);
+    //    clickerPosition.z = 0;
+    //    SprinkleBehaviour.startingPosition = clickerPosition;
+    //    Debug.Log("Clicker position set to : " + clickerPosition);
+    //}
 
     private void OnEnable()
     {
+        Debug.Log("Subscribing display clicks and spawn sprinkle");
         ClicksChanged += DisplayClicks;
         ClicksChanged += SpawnSprinkle;
         if (_clicksNumberGameScreen != null)
@@ -85,6 +93,7 @@ public class ClickerBehaviour : MonoBehaviour
 
     private void SpawnSprinkle()
     {
+        Debug.Log("Spawn Sprinkle");
         GameObject sprinkle = GameManager.Instance.sprinkles[GameManager.Instance.activeSprinkles];
         if (sprinkle.activeSelf == true)
         {

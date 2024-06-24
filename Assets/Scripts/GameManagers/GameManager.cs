@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        Debug.Log("EndGame: max time is set to ten");
         gameCanvas.SetActive(false);
         endScreenPopup.SetActive(true);
         if (maxTime > _maxTime)
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("Restart game");
         buttonBehaviour.Clicks = 0;
         RestartUI();
         RestartTime();

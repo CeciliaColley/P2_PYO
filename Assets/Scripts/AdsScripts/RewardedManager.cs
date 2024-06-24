@@ -62,6 +62,7 @@ public class RewardedAdManager : MonoBehaviour
         }
         Debug.Log("A rewarded ad is closing.");
         AdsManager.Instance.banner.Show();
+        Advertisement.Load(adUnitID, this);
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)

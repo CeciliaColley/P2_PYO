@@ -61,6 +61,7 @@ public class InterstitialManager : MonoBehaviour
     {
         Debug.Log("An interstitial ad is closing.");
         AdsManager.Instance.banner.Show();
+        Advertisement.Load(adUnitID, this);
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
