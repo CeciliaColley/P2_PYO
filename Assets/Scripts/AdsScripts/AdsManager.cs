@@ -64,6 +64,19 @@ public class AdsManager : MonoBehaviour
             Instance = this;
         }
         else Destroy(gameObject);
+
+        if (banner == null)
+        {
+            banner = GetComponentInChildren<BannerManager>();
+        }
+        if (interstitial == null)
+        {
+            interstitial = GetComponentInChildren<InterstitialManager>();
+        }
+        if (rewardedAd == null)
+        {
+            rewardedAd = GetComponentInChildren<RewardedAdManager>();
+        }
     }
 #endif
 }
