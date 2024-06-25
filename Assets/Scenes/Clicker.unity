@@ -9774,7 +9774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   androidAdUnitID: Rewarded_Android
   iOSAdUnitID: Rewarded_iOS
-  rewardedSeconds: 0
+  rewardedSeconds: 2
 --- !u!4 &935384452
 Transform:
   m_ObjectHideFlags: 0
