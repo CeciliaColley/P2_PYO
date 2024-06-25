@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_ANDROID
 using Unity.Notifications.Android;
+#endif
 using UnityEngine;
 
 
 public class LocalNotisManager : MonoBehaviour
 {
+#if UNITY_ANDROID
     private static string CHANNEL_ID = "notis01";
 
     private void Start()
@@ -69,4 +72,5 @@ public class LocalNotisManager : MonoBehaviour
 
         AndroidNotificationCenter.SendNotification(notification10Mins, CHANNEL_ID);
     }
+#endif
 }
