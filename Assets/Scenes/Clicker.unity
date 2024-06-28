@@ -8860,9 +8860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05e9827ee5cb1346912af9efaed78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  banner: {fileID: 724668585}
-  interstitial: {fileID: 804746683}
-  rewardedAd: {fileID: 935384451}
+  banner: {fileID: 0}
+  interstitial: {fileID: 0}
+  rewardedAd: {fileID: 0}
 --- !u!1 &842286975
 GameObject:
   m_ObjectHideFlags: 0
